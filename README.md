@@ -10,15 +10,3 @@ Hey there! Welcome to my Food Menu Project. This is a simple Java app where you 
 - **Shopping Bag**: Add items to your shopping bag and calculate the total price.
 - **Easy to Read**: Everything is displayed in a neat format.
 
-## How to Get Started
-
-### Prerequisites
-
-- Make sure you have Java (JDK 8 or higher) installed.
-- An IDE (like IntelliJ IDEA or Eclipse) or a text editor that you like.
-
-### Installation
-
-1. Clone the repo:
-   ```bash
-   git clone <repository-url>
