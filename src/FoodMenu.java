@@ -28,4 +28,14 @@ public class FoodMenu {
             return null;
         }
     }
+
+    public Food getLowestCostFood() {
+        if (menu.isEmpty()) { return null; }
+
+        Food lowest = menu.getFirst();
+        for (Food food: menu) {
+            if (food.getPrice() < lowest.getPrice())  { lowest = food; }
+        }
+        return lowest;
+    }
 }
