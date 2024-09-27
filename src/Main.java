@@ -23,7 +23,7 @@ public class Main {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid number input. Please enter a valid integer.");
-                input.next(); // Clear the invalid input
+                input.next();
             }
         }
 
