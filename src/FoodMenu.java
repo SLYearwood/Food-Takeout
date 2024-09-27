@@ -21,4 +21,11 @@ public class FoodMenu {
         }
         return sb.toString();
     }
+    public Food getFood(int index) {
+        try {
+            return menu.get(index);
+        } catch (IndexOutOfBoundsException e) {
+            return null;
+        }
+    }
 }
