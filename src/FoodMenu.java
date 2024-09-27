@@ -38,4 +38,8 @@ public class FoodMenu {
         }
         return lowest;
     }
+
+    public boolean isEmpty() {
+        return menu.isEmpty();
+    }
 }

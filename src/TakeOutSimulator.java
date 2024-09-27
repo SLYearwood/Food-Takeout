@@ -102,8 +102,8 @@ public class TakeOutSimulator {
         int customerMoneyLeft = customer.getMoney();
         ShoppingBag<Food> shoppingBag = new ShoppingBag<>();
 
-        while (isStillOrderingFood()) {
-            System.out.println("You have $" + customerMoneyLeft +" left to spend\n");
+        do {
+            System.out.println("You have $" + customerMoneyLeft + " left to spend\n");
             Food selection = getMenuSelection();
             if (selection.getPrice() <= customerMoneyLeft) {
                 customerMoneyLeft -= selection.getPrice();
@@ -112,8 +112,22 @@ public class TakeOutSimulator {
             } else {
                 System.out.println("Oops! Looks like you don't have enough for that. Choose another item or checkout.");
             }
-        }
+        }   while (isStillOrderingFood());
+
         checkOutCustomer(shoppingBag);
+    }
+
+    public void startTakeOutSimulator() {
+        System.out.println("Hello, welcome to my restaurant!\n");
+        System.out.println("Welcome " + customer.getName() + "!");
+
+        if (menu.isEmpty()) {
+            System.out.println("Sorry, the menu is empty. Please come back later!");
+            return;
+        }
+        do takeOutPrompt();
+        while (shouldSimulate());
+        System.out.println("Simulation ended. Thank you for visiting!");
     }
 }
 
