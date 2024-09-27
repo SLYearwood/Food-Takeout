@@ -1,2 +1,4 @@
-public interface IntUserInputRetriever {
+public interface IntUserInputRetriever<T> {
+    T produceOutputOnIntUserInput(int selection) throws IllegalArgumentException;
 }
+g
