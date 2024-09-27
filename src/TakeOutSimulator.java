@@ -51,5 +51,23 @@ public class TakeOutSimulator {
         };
         return getOutputOnIntInput(userPrompt, retriever);
     }
+
+    public boolean isStillOrderingFood() {
+        String userPrompt = "Enter 1 to CONTINUE shopping or 0 to CHECKOUT: ";
+
+        IntUserInputRetriever<Boolean> retriever = new IntUserInputRetriever<Boolean>() {
+            @Override
+            public Boolean produceOutputOnIntUserInput(int selection) throws IllegalArgumentException {
+                if (selection == 1) {
+                    return true;
+                } else if (selection == 2) {
+                    return false;
+                } else {
+                    throw new IllegalArgumentException("Selection must be 0 or 1");
+                }
+            }
+        };
+        return getOutputOnIntInput(userPrompt, retriever);
+    }
 }
 
