@@ -52,6 +52,26 @@ public class TakeOutSimulator {
         return getOutputOnIntInput(userPrompt, retriever);
     }
 
+    public Food getMenuSelection() {
+        String userPrompt = "Choose a menu item!: ";
+
+        System.out.println("Today's Menu Options!\n");
+        System.out.println(menu.toString());
+
+
+        IntUserInputRetriever<Food> retriever = (int selection) -> {
+            Food selectedFood = menu.getFood(selection - 1);
+            if (selectedFood == null) {
+                throw new IllegalArgumentException("Invalid selection: no such item.");
+            }
+            return selectedFood;
+        };
+
+
+        return getOutputOnIntInput(userPrompt, retriever);
+    }
+
+
     public boolean isStillOrderingFood() {
         String userPrompt = "Enter 1 to CONTINUE shopping or 0 to CHECKOUT: ";
 
@@ -60,7 +80,7 @@ public class TakeOutSimulator {
             public Boolean produceOutputOnIntUserInput(int selection) throws IllegalArgumentException {
                 if (selection == 1) {
                     return true;
-                } else if (selection == 2) {
+                } else if (selection == 0) {
                     return false;
                 } else {
                     throw new IllegalArgumentException("Selection must be 0 or 1");
@@ -76,7 +96,25 @@ public class TakeOutSimulator {
         customer.setMoney(remainingMoney);
         System.out.println("Your remaining money: $" + remainingMoney);
         System.out.println("Thank you and enjoy your food!");
+    }
+
+    public void takeOutPrompt() {
+        int customerMoneyLeft = customer.getMoney();
+        ShoppingBag<Food> shoppingBag = new ShoppingBag<>();
+
+        while (isStillOrderingFood()) {
+            System.out.println("You have $" + customerMoneyLeft +" left to spend\n");
+            Food selection = getMenuSelection();
+            if (selection.getPrice() <= customerMoneyLeft) {
+                customerMoneyLeft -= selection.getPrice();
+                shoppingBag.addItem(selection);
+                System.out.println(selection.getName() + " added to your bag. Choose another item or checkout.");
+            } else {
+                System.out.println("Oops! Looks like you don't have enough for that. Choose another item or checkout.");
+            }
         }
+        checkOutCustomer(shoppingBag);
     }
 }
+
 

@@ -24,4 +24,8 @@ public class Food implements PricedItem<Integer> {
     public String toString() {
         return "Enjoy " + this.name + ": " + this.description + "   Cost: $" + this.price;
     }
+
+    public String getName() {
+        return this.name;
+    }
 }
