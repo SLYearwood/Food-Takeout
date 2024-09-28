@@ -3,18 +3,14 @@ import java.util.Map;
 
 public class ShoppingBag<T extends PricedItem<Integer>> {
 
-    private Map<T, Integer> shoppingBag;
+    private final Map<T, Integer> shoppingBag;
 
     public ShoppingBag() {
         shoppingBag = new HashMap<>();
     }
 
     public void addItem(T item) {
-        if (shoppingBag.get(item) == null) {
-            shoppingBag.put(item, 1);
-        } else {
-            shoppingBag.put(item, shoppingBag.get(item) + 1);
-        }
+        shoppingBag.merge(item, 1, Integer::sum);
     }
 
     public int getTotalPrice(){

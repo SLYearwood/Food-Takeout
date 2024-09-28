@@ -3,7 +3,7 @@ import java.util.List;
 
 public class FoodMenu {
 
-    private List<Food> menu;
+    private final List<Food> menu;
 
     public FoodMenu() {
         menu = new ArrayList<>();
@@ -17,7 +17,7 @@ public class FoodMenu {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < menu.size(); i++) {
             Food food = menu.get(i);
-            sb.append((i + 1) + ". " + food.toString()).append("\n");
+            sb.append((i + 1)).append(". ").append(food.toString()).append("\n");
         }
         return sb.toString();
     }

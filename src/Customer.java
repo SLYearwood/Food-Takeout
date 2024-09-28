@@ -20,7 +20,4 @@ public class Customer {
         this.money = money;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }
