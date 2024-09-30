@@ -1,6 +1,6 @@
 public class Customer {
 
-    private String name;
+    private final String name;
     private int money;
 
     public Customer(String name, int money) {
